@@ -1,6 +1,7 @@
 package no.hvl.dat100;
 
 import java.util.Scanner;
+import static java.lang.Integer.parseInt;
 
 public class O2 {
     public static void main(String[] args) {
@@ -10,11 +11,11 @@ public class O2 {
 
         for (int i = 0; i < antStud; i++) {
             System.out.print("Poengsum: ");
-            int poengsum = input.nextInt();
+            int poengsum = parseInt(input.nextLine());
 
             while (poengsum > 100 || poengsum < 0) {
                 System.out.print("Ugyldig poengsum. Prøv igjen: ");
-                poengsum = input.nextInt();
+                poengsum = parseInt(input.nextLine());
             }
 
             if (poengsum >= 90) {
