@@ -12,6 +12,7 @@ public class O1 {
         int lonn = parseInt(input.nextLine());
 
         System.out.println("Trinnskatt: " + beregnTrinnskatt(lonn));
+        input.close();
     }
 
     private static int beregnTrinnskatt(int lonn) {
@@ -33,44 +34,25 @@ public class O1 {
             return 0;
         }
 
-        double interim;
-
-        if (lonn <= trinn1) {
-            interim = lonn - trinn0;
-            totalTrinnskatt += interim * trinnskatt1;
-        } else if (lonn <= trinn2) {
-            interim = trinn1 - trinn0;
-            totalTrinnskatt += interim * trinnskatt1;
-            interim = lonn - trinn1;
-            totalTrinnskatt += interim * trinnskatt2;
-        } else if (lonn <= trinn3) {
-            interim = trinn1 - trinn0;
-            totalTrinnskatt += interim * trinnskatt1;
-            interim = trinn2 - trinn1;
-            totalTrinnskatt += interim * trinnskatt2;
-            interim = lonn - trinn2;
-            totalTrinnskatt += interim * trinnskatt3;
-        } else if (lonn <= trinn4) {
-            interim = trinn1 - trinn0;
-            totalTrinnskatt += interim * trinnskatt1;
-            interim = trinn2 - trinn1;
-            totalTrinnskatt += interim * trinnskatt2;
-            interim = trinn3 - trinn2;
-            totalTrinnskatt += interim * trinnskatt3;
-            interim = lonn - trinn3;
-            totalTrinnskatt += interim * trinnskatt4;
-        } else {
-            interim = trinn1 - trinn0;
-            totalTrinnskatt += interim * trinnskatt1;
-            interim = trinn2 - trinn1;
-            totalTrinnskatt += interim * trinnskatt2;
-            interim = trinn3 - trinn2;
-            totalTrinnskatt += interim * trinnskatt3;
-            interim = trinn4 - trinn3;
-            totalTrinnskatt += interim * trinnskatt4;
-            interim = lonn - trinn4;
-            totalTrinnskatt += interim * trinnskatt5;
+        while (lonn > trinn0) {
+            if (lonn > trinn4) {
+                totalTrinnskatt += (lonn - trinn4) * trinnskatt5;
+                lonn -= (lonn - trinn4);
+            } else if (lonn > trinn3) {
+                totalTrinnskatt += (lonn - trinn3) * trinnskatt4;
+                lonn -= (lonn - trinn3);
+            } else if (lonn > trinn2) {
+                totalTrinnskatt += (lonn - trinn2) * trinnskatt3;
+                lonn -= (lonn - trinn2);
+            } else if (lonn > trinn1) {
+                totalTrinnskatt += (lonn - trinn1) * trinnskatt2;
+                lonn -= (lonn - trinn1);
+            } else {
+                totalTrinnskatt += (lonn - trinn0) * trinnskatt1;
+                lonn -= (lonn - trinn0);
+            }
         }
+
         totalTrinnskatt = round(totalTrinnskatt);
         return (int)totalTrinnskatt;
     }
