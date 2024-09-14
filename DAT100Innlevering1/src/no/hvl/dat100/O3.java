@@ -10,7 +10,7 @@ public class O3 {
         System.out.print("Skriv inn en verdi større enn 0: ");
         int num = parseInt(input.nextLine());
 
-        while (num < 0) {
+        while (num < 1) {
             System.out.print("Skriv inn en verdi større enn 0: ");
             num = parseInt(input.nextLine());
         }
