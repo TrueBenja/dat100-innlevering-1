@@ -1,7 +1,6 @@
 package no.hvl.dat100;
 
 import java.util.Scanner;
-import static java.lang.Math.round;
 import static java.lang.Integer.parseInt;
 
 public class O1 {
@@ -11,11 +10,11 @@ public class O1 {
         System.out.print("Bruttolønn: ");
         int lonn = parseInt(input.nextLine());
 
-        System.out.println("Trinnskatt: " + beregnTrinnskatt(lonn));
+        System.out.println("Trinnskatt: " + String.format("%.2f", beregnTrinnskatt(lonn)) + " kr");
         input.close();
     }
 
-    private static int beregnTrinnskatt(int lonn) {
+    private static double beregnTrinnskatt(int lonn) {
         int trinn0 = 208050;
         int trinn1 = 292850;
         int trinn2 = 670000;
@@ -53,7 +52,6 @@ public class O1 {
             }
         }
 
-        totalTrinnskatt = round(totalTrinnskatt);
-        return (int)totalTrinnskatt;
+        return totalTrinnskatt;
     }
 }
